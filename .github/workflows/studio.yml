@@ -65,7 +65,7 @@ jobs:
         run: echo $'\nautoImport=true\nmodules[]=@nuxt/content@next' >> .nuxtrc
 
       - name: Generate
-        run: npx nuxi build --preset cloudflare-pages
+        run: npx nuxthub deploy
         env:
           NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
@@ -74,4 +74,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: site/.output/public
+          folder: site/dist
