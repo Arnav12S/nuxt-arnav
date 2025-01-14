@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ParsedContentv2 } from '@nuxt/content'
-import type { ContentNavigationItem } from '../../types/navigation'
+import type { ContentNavigationItem } from '../../content/types/navigation'
 
 const { data: navigation } = await useAsyncData<ContentNavigationItem[]>('navigation', () => 
   queryCollectionNavigation('content', ['description', 'badge'])

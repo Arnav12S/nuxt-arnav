@@ -87,8 +87,8 @@
 <script setup lang="ts">
 import { ref, computed, inject, onMounted, onUnmounted } from 'vue'
 import { useAsyncData } from '#app'
-import type { ContentNavigationItem } from '../../types/navigation'
-import type { BlogCollectionItem, ProjectCollectionItem, PageCollectionItem } from '../../types/collections'
+import type { ContentNavigationItem } from '../../content/types/navigation'
+import type { BlogCollectionItem, ProjectCollectionItem, PageCollectionItem } from '../../content/types/collections'
 
 // Update the search results interface
 interface SearchResult {

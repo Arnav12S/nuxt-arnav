@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 import type { ParsedContentv2 } from '@nuxt/content'
-import type { ContentNavigationItem } from '../types/navigation'
+import type { ContentNavigationItem } from '../content/types/navigation'
 
 defineProps({
   error: {

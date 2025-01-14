@@ -40,7 +40,7 @@ jobs:
       - name: Identify package manager
         id: pkgman
         run: |
-          cache=`[ -f "content/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "content/package-lock.json" ] && echo "npm" || ([ -f "content/yarn.lock" ] && echo "yarn" || echo ""))`
+          cache=`[ -f "site/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "content/package-lock.json" ] && echo "npm" || ([ -f "content/yarn.lock" ] && echo "yarn" || echo ""))`
           package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
           echo "cache=$cache" >> $GITHUB_OUTPUT
           echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
@@ -58,11 +58,11 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.pkgman.outputs.package_manager }} install
 
-      - name: Install @nuxthq/studio
-        run: ${{ steps.pkgman.outputs.package_manager }} add -D @nuxthq/studio
+      - name: Install @nuxt/content@next
+        run: ${{ steps.pkgman.outputs.package_manager }} add -D @nuxt/content@next
 
       - name: Create .nuxtrc
-        run: echo $'\nautoImport=true\nmodules[]=@nuxthq/studio' >> .nuxtrc
+        run: echo $'\nautoImport=true\nmodules[]=@nuxt/content@next' >> .nuxtrc
 
       - name: Generate
         run: npx nuxi build --preset github_pages
@@ -74,4 +74,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: content/.output/public
+          folder: site/.output/public
